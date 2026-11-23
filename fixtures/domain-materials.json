@@ -1,0 +1,229 @@
+{
+  "title": "训练负荷异常、联合医疗限训和队伍选拔",
+  "source_note": "本文件中的机构、事件、规则和数值均为人工构造的本地合成资料。",
+  "contract": "sessions 以 athlete/session_id 唯一。sensor.form 提供设备代次、calibration_group 可比较关系。plan.required_sessions 为计划，medical.order 的禁项和有效期是强约束，override 必须 physician_signed。roster 规定专项最少席位和资格。candidate.available 表示愿意参训，injury_claim 需按时间核验。时间统一 UTC。",
+  "tables": {
+    "sessions": [
+      {
+        "id": "S1",
+        "athlete": "A",
+        "date": "2026-06-01",
+        "discipline": "sprint",
+        "device": "D1",
+        "value": "9.4",
+        "known_at": "2026-06-01"
+      },
+      {
+        "id": "S2",
+        "athlete": "A",
+        "date": "2026-06-04",
+        "discipline": "strength",
+        "device": "D1",
+        "value": "8.8",
+        "known_at": "2026-06-04"
+      },
+      {
+        "id": "S3",
+        "athlete": "A",
+        "date": "2026-06-08",
+        "discipline": "sprint",
+        "device": "D2",
+        "value": "17.9",
+        "known_at": "2026-06-12"
+      },
+      {
+        "id": "S4",
+        "athlete": "B",
+        "date": "2026-06-01",
+        "discipline": "sprint",
+        "device": "D3",
+        "value": "12.2",
+        "known_at": "2026-06-01"
+      },
+      {
+        "id": "S5",
+        "athlete": "B",
+        "date": "2026-06-04",
+        "discipline": "strength",
+        "device": "D3",
+        "value": "7.1",
+        "known_at": "2026-06-04"
+      },
+      {
+        "id": "S6",
+        "athlete": "C",
+        "date": "2026-06-01",
+        "discipline": "sprint",
+        "device": "D4",
+        "value": "9.7",
+        "known_at": "2026-06-01"
+      },
+      {
+        "id": "S7",
+        "athlete": "C",
+        "date": "2026-06-04",
+        "discipline": "strength",
+        "device": "D4",
+        "value": "8.4",
+        "known_at": "2026-06-04"
+      }
+    ],
+    "sensor": [
+      {
+        "device": "D1",
+        "generation": "gen1",
+        "calibration_group": "A"
+      },
+      {
+        "device": "D2",
+        "generation": "gen2",
+        "calibration_group": "B"
+      },
+      {
+        "device": "D3",
+        "generation": "gen1",
+        "calibration_group": "A"
+      },
+      {
+        "device": "D4",
+        "generation": "gen1",
+        "calibration_group": "A"
+      }
+    ],
+    "plan": [
+      {
+        "athlete": "A",
+        "week": "24",
+        "discipline": "sprint",
+        "required_sessions": "3"
+      },
+      {
+        "athlete": "A",
+        "week": "24",
+        "discipline": "strength",
+        "required_sessions": "2"
+      },
+      {
+        "athlete": "B",
+        "week": "24",
+        "discipline": "sprint",
+        "required_sessions": "3"
+      },
+      {
+        "athlete": "B",
+        "week": "24",
+        "discipline": "strength",
+        "required_sessions": "2"
+      },
+      {
+        "athlete": "C",
+        "week": "24",
+        "discipline": "sprint",
+        "required_sessions": "3"
+      },
+      {
+        "athlete": "C",
+        "week": "24",
+        "discipline": "strength",
+        "required_sessions": "2"
+      }
+    ],
+    "medical": [
+      {
+        "athlete": "A",
+        "restriction": "sprint",
+        "start": "2026-06-06",
+        "end": "2026-06-20",
+        "physician_signed": "1"
+      },
+      {
+        "athlete": "B",
+        "restriction": "~",
+        "start": "~",
+        "end": "~",
+        "physician_signed": "~"
+      },
+      {
+        "athlete": "C",
+        "restriction": "~",
+        "start": "~",
+        "end": "~",
+        "physician_signed": "~"
+      }
+    ],
+    "roster": [
+      {
+        "team": "R1",
+        "role": "sprint",
+        "minimum_sessions": "2",
+        "qualification": "federation-card"
+      },
+      {
+        "team": "R1",
+        "role": "strength",
+        "minimum_sessions": "1",
+        "qualification": "rehab-clearance"
+      }
+    ],
+    "candidate": [
+      {
+        "athlete": "A",
+        "role": "sprint",
+        "available": "1",
+        "federation_card": "1",
+        "rehab_clearance": "0"
+      },
+      {
+        "athlete": "B",
+        "role": "sprint",
+        "available": "1",
+        "federation_card": "1",
+        "rehab_clearance": "1"
+      },
+      {
+        "athlete": "C",
+        "role": "sprint",
+        "available": "1",
+        "federation_card": "0",
+        "rehab_clearance": "1"
+      },
+      {
+        "athlete": "A",
+        "role": "strength",
+        "available": "1",
+        "federation_card": "1",
+        "rehab_clearance": "0"
+      },
+      {
+        "athlete": "B",
+        "role": "strength",
+        "available": "1",
+        "federation_card": "1",
+        "rehab_clearance": "1"
+      },
+      {
+        "athlete": "C",
+        "role": "strength",
+        "available": "1",
+        "federation_card": "1",
+        "rehab_clearance": "1"
+      }
+    ],
+    "injury_claim": [
+      {
+        "athlete": "B",
+        "start": "2026-06-07",
+        "end": "2026-06-09",
+        "kind": "muscle",
+        "state": "open"
+      },
+      {
+        "athlete": "C",
+        "start": "~",
+        "end": "~",
+        "kind": "~",
+        "state": "~"
+      }
+    ]
+  }
+}
